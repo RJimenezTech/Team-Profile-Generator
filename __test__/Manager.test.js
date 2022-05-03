@@ -3,8 +3,10 @@ const Manager = require('../lib/Manager.js');
 // jest.mock('../lib/Manager.js');
 
 test('creates an manager object', () => {
-    const manager = new Manager('Robert');
+    const manager = new Manager('Robert','001','rjimeneztech@gmail.com');
     expect(manager.name).toBe('Robert');
+    expect(manager.id).toBe('001');
+    expect(manager.email).toBe('rjimeneztech@gmail.com');
 });
 
 test("returns 'manager' for manager object", () => {
