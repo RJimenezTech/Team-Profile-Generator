@@ -1,5 +1,9 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
+const employee = require('./lib/Employee.js');
+const manager = require('./lib/Manager.js')
+const intern = require('./lib/Intern.js')
+const {writeToFile, generateSite} = require('./generate-site.js');
 
 const promptManager = () => { 
     return inquirer.prompt([
@@ -119,5 +123,8 @@ promptManager()
     .then(promptEngineer)
     .then(promptIntern)
     .then(teamData => {
-        return console.log(teamData)
+        return generateSite(teamData);
+    })
+    .then(siteHTML => {
+        return writeToFile(siteHTML);
     }); 
