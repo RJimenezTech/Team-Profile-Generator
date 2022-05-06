@@ -49,6 +49,11 @@ Add an Engineer to the project
             },
             {
                 type: 'input',
+                name: 'id',
+                message: "What is the Engineer's employee ID?"
+            },
+            {
+                type: 'input',
                 name: 'email',
                 message: "What is the Engineer's email address?"
             },
@@ -93,6 +98,11 @@ Add an Intern to the project
             },
             {
                 type: 'input',
+                name: 'id',
+                message: "What is the Intern's employee ID?"
+            },
+            {
+                type: 'input',
                 name: 'email',
                 message: "What is the Intern's email address?"
             },
@@ -125,6 +135,7 @@ promptManager()
         return generateTeam(teamData);
     })
     .then(teamObject => {
+        console.log(teamObject);
         return generateSite(teamObject);
     })
     .then(siteHTML => {

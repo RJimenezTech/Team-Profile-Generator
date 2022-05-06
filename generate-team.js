@@ -17,8 +17,9 @@ const generateTeam = (teamData) => {
         teamData.engineers.forEach(engineer => {
             const newEngineer = new Engineer(
                 engineer.engineerName,
+                engineer.id,
                 engineer.email,
-                engineer.gitHub,
+                engineer.gitHub
             )
             teamObject.engineers.push(newEngineer);
         })
@@ -28,6 +29,7 @@ const generateTeam = (teamData) => {
         teamData.interns.forEach(intern => {
             const newIntern = new Intern(
                 intern.internName,
+                intern.id,
                 intern.email,
                 intern.school,
             )

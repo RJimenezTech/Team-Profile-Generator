@@ -32,7 +32,20 @@ const renderEngineers = engineersData => {
 };
 
 const renderInterns = internsData => {
-
+    let template = "";
+    internsData.forEach(intern => {
+        template += `
+            <div class="card col-4 m-3">
+                <div class="card-body">
+                    <h3 class="card-title">Engineer</h3>
+                    <h5 class="card-text">Name: ${intern.getName()}</h5>
+                    <h5 class="card-text">ID: ${intern.getId()}</h5>
+                    <h5 class="card-text">Email: ${intern.getEmail()}</h5>
+                    <h5 class="card-text">School: ${intern.getSchool()}</h5>
+                </div>
+            </div>`
+    })
+    return template;
 };
 
 const generateSite = teamObject => {
@@ -55,6 +68,7 @@ const generateSite = teamObject => {
             <div class="row border border-dark d-flex justify-content-center align-items-center">
                 ${renderManager(teamObject.manager)}
                 ${renderEngineers(teamObject.engineers)}
+                ${renderInterns(teamObject.interns)}
             </div>
         </main>
         
