@@ -125,21 +125,15 @@ Add an Engineer to the project
                         return false;
                     }
                 }
-            },
-            {
-                type: 'confirm',
-                name: 'confirmAddEngineer',
-                message: "Do you want to add an Engineer?",
-                default: false
             }
         ])
         .then(engineerData => {
             teamData.engineers.push(engineerData);
-            if(engineerData.confirmAddEngineer) {
-                return promptEngineer(teamData);
-            } else {
+            // if(engineerData.confirmAddEngineer) {
+            //     return promptEngineer(teamData);
+            // } else {
                 return teamData;
-            }
+            // }
         });
 };
 
@@ -206,27 +200,46 @@ Add an Intern to the project
                         return false;
                     }
                 }
-            },
-            {
-                type: 'confirm',
-                name: 'confirmAddIntern',
-                message: "Do you want to add an intern?",
-                default: false
             }
         ])
         .then(internData => {
             teamData.interns.push(internData);
-            if(internData.confirmAddIntern) {
-                return promptIntern(teamData);
-            } else {
+            // if(internData.confirmAddIntern) {
+            //     return promptIntern(teamData);
+            // } else {
                 return teamData;
-            }
+            // }
         });
 };
 
+const promptAddEmployee = teamData => {
+    return inquirer
+        .prompt([
+            {
+                type: "list",
+                name: "choice",
+                message: "Do you want to add an employee?",
+                choices: ["Add engineer", "Add intern", "Do NOT add employee."]
+            }
+        ])
+        .then(choiceData => {
+            if (choiceData.choice === "Add engineer") {
+                return promptEngineer(teamData).then(teamData => {
+                    return promptAddEmployee(teamData)
+                    });
+            } else if (choiceData.choice === "Add intern") {
+                return promptIntern(teamData).then(teamData => {
+                    return promptAddEmployee(teamData);
+                    });
+            }
+            return teamData;
+        })
+};
+
 promptManager()
-    .then(promptEngineer)
-    .then(promptIntern)
+    .then(teamData => {
+        return promptAddEmployee(teamData);
+    })
     .then(teamData => {
         return generateTeam(teamData);
     })

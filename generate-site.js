@@ -5,26 +5,29 @@ const renderManager = manager => {
     return `
             <div class="card col-3 m-3">
                 <div class="card-body">
-                    <h3 class="card-title">${manager.getName()}</h3>
-                    <h5 class="card-text">Title: ${manager.getRole()}</h5>
-                    <h5 class="card-text">ID: ${manager.getId()}</h5>
-                    <h5 class="card-text">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></h5>
-                    <h5 class="card-text">Office No.: ${manager.getOfficeNumber()}</h5>
+                    <h2 class="card-title">${manager.getName()}</h3>
+                    <h6 class="card-text">Role: ${manager.getRole()}</h5>
+                    <h6 class="card-text">ID: ${manager.getId()}</h5>
+                    <h6 class="card-text">E: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></h5>
+                    <h6 class="card-text">Office No.: ${manager.getOfficeNumber()}</h5>
                 </div>
             </div>`;
 };
 
 const renderEngineers = engineersData => {
     let template = "";
+    if (!engineersData) {
+        return template;
+    }
     engineersData.forEach(engineer => {
         template += `
             <div class="card col-3 m-3">
                 <div class="card-body">
-                    <h3 class="card-title">${engineer.getName()}</h3>
-                    <h5 class="card-text">Title: ${engineer.getRole()}</h5>
-                    <h5 class="card-text">ID: ${engineer.getId()}</h5>
-                    <h5 class="card-text">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></h5>
-                    <h5 class="card-text">GitHub: <a href="${engineer.getGitHubUrl()}">${engineer.getGitHub()}</a></h5>
+                    <h2 class="card-title">${engineer.getName()}</h3>
+                    <h6 class="card-text">Role: ${engineer.getRole()}</h5>
+                    <h6 class="card-text">ID: ${engineer.getId()}</h5>
+                    <h6 class="card-text">E: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></h5>
+                    <h6 class="card-text">GitHub: <a href="${engineer.getGitHubUrl()}">${engineer.getGitHub()}</a></h5>
                 </div>
             </div>`
     })
@@ -33,15 +36,18 @@ const renderEngineers = engineersData => {
 
 const renderInterns = internsData => {
     let template = "";
+    if(!internsData) {
+        return template;
+    }
     internsData.forEach(intern => {
         template += `
             <div class="card col-3 m-3">
                 <div class="card-body">
-                    <h3 class="card-title">${intern.getName()}</h3>
-                    <h5 class="card-text">Title: ${intern.getRole()}</h5>
-                    <h5 class="card-text">ID: ${intern.getId()}</h5>
-                    <h5 class="card-text">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></h5>
-                    <h5 class="card-text">School: ${intern.getSchool()}</h5>
+                    <h2 class="card-title">${intern.getName()}</h3>
+                    <h6 class="card-text">Role: ${intern.getRole()}</h5>
+                    <h6 class="card-text">ID: ${intern.getId()}</h5>
+                    <h6 class="card-text">E: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></h5>
+                    <h6 class="card-text">School: ${intern.getSchool()}</h5>
                 </div>
             </div>`
     })
