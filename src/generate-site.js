@@ -1,16 +1,16 @@
 const fs = require('fs');
-const Manager = require('./lib/Manager.js');
 
 const renderManager = manager => {
-    return `
-            <div class="card col-3 m-3">
-                <div class="card-body">
-                    <h2 class="card-title">${manager.getName()}</h3>
-                    <h6 class="card-text">Role: ${manager.getRole()}</h5>
-                    <h6 class="card-text">ID: ${manager.getId()}</h5>
-                    <h6 class="card-text">E: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></h5>
-                    <h6 class="card-text">Office No.: ${manager.getOfficeNumber()}</h5>
+    return `<div class="card col-3 m-3 p-0 shadow">
+                <div class="card-header bg-success text-white">
+                    <h3>${manager.getName()}</h3>
                 </div>
+                <ul class="list-group list-group-flush">
+                    <h6 class="list-group-item">Role: ${manager.getRole()}</h6>
+                    <h6 class="list-group-item">ID: ${manager.getId()}</h6>
+                    <h6 class="list-group-item">E: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></h6>
+                    <h6 class="list-group-item">Office #: ${manager.getOfficeNumber()}</h6>
+                </ul>
             </div>`;
 };
 
@@ -21,14 +21,16 @@ const renderEngineers = engineersData => {
     }
     engineersData.forEach(engineer => {
         template += `
-            <div class="card col-3 m-3">
-                <div class="card-body">
-                    <h2 class="card-title">${engineer.getName()}</h3>
-                    <h6 class="card-text">Role: ${engineer.getRole()}</h5>
-                    <h6 class="card-text">ID: ${engineer.getId()}</h5>
-                    <h6 class="card-text">E: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></h5>
-                    <h6 class="card-text">GitHub: <a href="${engineer.getGitHubUrl()}">${engineer.getGitHub()}</a></h5>
+            <div class="card col-3 m-3 p-0 shadow">
+                <div class="card-header bg-warning text-dark">
+                    <h3>${engineer.getName()}</h3>    
                 </div>
+                <ul class="list-group list-group-flush">
+                    <h6 class="list-group-item">Role: ${engineer.getRole()}</h5>
+                    <h6 class="list-group-item">ID: ${engineer.getId()}</h5>
+                    <h6 class="list-group-item">E: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></h5>
+                    <h6 class="list-group-item">GitHub: <a href="${engineer.getGitHubUrl()}">${engineer.getGitHub()}</a></h5>
+                </ul>
             </div>`
     })
     return template;
@@ -41,14 +43,16 @@ const renderInterns = internsData => {
     }
     internsData.forEach(intern => {
         template += `
-            <div class="card col-3 m-3">
-                <div class="card-body">
-                    <h2 class="card-title">${intern.getName()}</h3>
-                    <h6 class="card-text">Role: ${intern.getRole()}</h5>
-                    <h6 class="card-text">ID: ${intern.getId()}</h5>
-                    <h6 class="card-text">E: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></h5>
-                    <h6 class="card-text">School: ${intern.getSchool()}</h5>
+            <div class="card col-3 m-3 p-0 shadow">
+                <div class="card-header bg-secondary text-white">
+                    <h3>${intern.getName()}</h3>
                 </div>
+                <ul class="list-group list-group-flush">
+                    <h6 class="list-group-item">Role: ${intern.getRole()}</h5>
+                    <h6 class="list-group-item">ID: ${intern.getId()}</h5>
+                    <h6 class="list-group-item">E: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></h5>
+                    <h6 class="list-group-item">School: ${intern.getSchool()}</h5>
+                </ul>
             </div>`
     })
     return template;
@@ -71,7 +75,7 @@ const generateSite = teamObject => {
             <h1>Team Profile</h1>
         </header>
         <main class="container-fluid">
-            <div class="row border border-dark d-flex justify-content-center align-items-center">
+            <div class="row d-flex justify-content-center align-items-center">
                 ${renderManager(teamObject.manager)}
                 ${renderEngineers(teamObject.engineers)}
                 ${renderInterns(teamObject.interns)}

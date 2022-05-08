@@ -1,7 +1,6 @@
-const Engineer = require('./lib/Engineer.js');
-// const manager = require('./lib/Manager.js')
-const Intern = require('./lib/Intern.js');
-const Manager = require('./lib/Manager.js');
+const Engineer = require('../lib/Engineer.js');
+const Intern = require('../lib/Intern.js');
+const Manager = require('../lib/Manager.js');
 
 const generateTeam = (teamData) => {
     const teamObject = {};

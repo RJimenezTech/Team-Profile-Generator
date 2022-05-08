@@ -1,8 +1,8 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-const {writeToFile, generateSite} = require('./generate-site.js');
-const generateTeam = require('./generate-team.js');
+const {writeToFile, generateSite} = require('./src/generate-site.js');
+const generateTeam = require('./src/generate-team.js');
 
 const promptManager = () => { 
     return inquirer.prompt([
